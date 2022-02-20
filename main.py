@@ -39,10 +39,7 @@ while score != 50:
     # if the user types exit then the game will end and we will be presented with a new csv file with states we can
     # brush up on to get better
     if answer_state == "Exit":
-        states_to_learn = []
-        for state in states_dict["state"]:
-            if state not in guessed_states_list:
-                states_to_learn.append(state)
+        states_to_learn = [state for state in states_dict["state"] if state not in guessed_states_list]
 
         # here is where we actually write the csv file with our states to learn
         df_states_to_learn = pandas.DataFrame(states_to_learn).to_csv("states_to_learn.csv")
