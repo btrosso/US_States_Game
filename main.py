@@ -36,12 +36,15 @@ while score != 50:
     # get the user input for a state
     answer_state = screen.textinput(title=f"{score}/50 Guess the state", prompt="What's another state name?").title()
 
+    # if the user types exit then the game will end and we will be presented with a new csv file with states we can
+    # brush up on to get better
     if answer_state == "Exit":
         states_to_learn = []
         for state in states_dict["state"]:
             if state not in guessed_states_list:
                 states_to_learn.append(state)
 
+        # here is where we actually write the csv file with our states to learn
         df_states_to_learn = pandas.DataFrame(states_to_learn).to_csv("states_to_learn.csv")
         break
     # check the input given to see if it's a valid answer
